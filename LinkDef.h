@@ -6,8 +6,7 @@
 #pragma link off all namespaces;
 
 #pragma link C++ namespace AnitaFRB;
+#pragma link C++ class AnitaFRB::Waterfall+; 
+#pragma link C++ class AnitaFRB::WaterfallOptions; 
 
-#pragma link C++ class AnitaFRB::Waterfall; 
-#pragma link C++ class AnitaFRB::Waterfall::WaterfallOptions; 
-
-#endif; 
+#endif 
