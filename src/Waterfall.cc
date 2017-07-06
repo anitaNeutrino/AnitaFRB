@@ -188,7 +188,8 @@ AnitaFRB::Waterfall::Waterfall(const WaterfallOptions & opt)
     waterfalls[ang]->GetXaxis()->SetTimeDisplay(1); 
     waterfalls[ang]->GetXaxis()->SetTitle("time"); 
     waterfalls[ang]->GetYaxis()->SetTitle("f (MHz)"); 
-    waterfalls[ang]->GetZaxis()->SetTitle("power"); 
+    waterfalls[ang]->GetZaxis()->SetTitle("power (mW / antenna / event ?) "); 
+    waterfalls[ang]->SetStats(0); 
 
    
     /*if don't resample, just  copy into hist */ 
@@ -212,7 +213,7 @@ AnitaFRB::Waterfall::Waterfall(const WaterfallOptions & opt)
       for (int ii = 1; ii <= waterfalls[ang]->GetNbinsX(); ii++)
       {
         int navg = 0; 
-        while(time[idata] < waterfalls[ang]->GetXaxis()->GetBinLowEdge(ii+1))
+        while(time[idata] < waterfalls[ang]->GetXaxis()->GetBinLowEdge(ii+1) && idata < (int) time.size() )
         {
           for (int jj = 1; jj <= waterfalls[ang]->GetNbinsY(); jj++)
           {
