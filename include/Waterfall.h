@@ -29,7 +29,7 @@ namespace AnitaFRB
       angular_bins = 8; 
       use_hpol = true; 
       use_vpol = true; 
-      max_bottom_top_ratio = 2.5; 
+      max_bottom_top_ratio = 5; 
       include_minbias = true; 
       include_rf = true; 
       min_freq_bin=20; 
@@ -42,7 +42,7 @@ namespace AnitaFRB
     int angular_bins; ///number of angular bins. This is in bearing (so basically assumes payload is stationary over the period we are interested in). You probably want this to be 4 8 or 16. 
     bool use_hpol; ///true to include hpol in average(default true) 
     bool use_vpol; ///true to use vpol in average (default true) 
-    double max_bottom_top_ratio;  ///for payload blast rejection, default 1.5
+    double max_bottom_top_ratio;  ///for payload blast rejection
     bool include_minbias; /// true (default) to include minbias triggers
     bool include_rf; /// true (default) to include rf triggers; 
 
