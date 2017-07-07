@@ -143,9 +143,7 @@ AnitaFRB::Waterfall::Waterfall(const WaterfallOptions & opt)
             {
               working_angle_power[k] += working_power[phi][k]; 
             }
-
           }
-       
         }
 
 
@@ -188,7 +186,7 @@ AnitaFRB::Waterfall::Waterfall(const WaterfallOptions & opt)
     waterfalls[ang]->GetXaxis()->SetTimeDisplay(1); 
     waterfalls[ang]->GetXaxis()->SetTitle("time"); 
     waterfalls[ang]->GetYaxis()->SetTitle("f (MHz)"); 
-    waterfalls[ang]->GetZaxis()->SetTitle("power (mW / antenna / event ?) "); 
+    waterfalls[ang]->GetZaxis()->SetTitle("power (output mW / antenna?) "); 
     waterfalls[ang]->SetStats(0); 
 
    
@@ -212,7 +210,6 @@ AnitaFRB::Waterfall::Waterfall(const WaterfallOptions & opt)
       int idata = 0; 
       for (int ii = 1; ii <= waterfalls[ang]->GetNbinsX(); ii++)
       {
-        int navg = 0; 
         while(time[idata] < waterfalls[ang]->GetXaxis()->GetBinLowEdge(ii+1) && idata < (int) time.size() )
         {
           for (int jj = 1; jj <= waterfalls[ang]->GetNbinsY(); jj++)
@@ -220,12 +217,6 @@ AnitaFRB::Waterfall::Waterfall(const WaterfallOptions & opt)
             waterfalls[ang]->SetBinContent(ii,jj, waterfalls[ang]->GetBinContent(ii,jj) + spectra[ang][jj-1][idata]);  
           }
           idata++; 
-          navg++; 
-        }
-
-        for (int jj = 1; jj <= waterfalls[ang]->GetNbinsY(); jj++)
-        {
-            waterfalls[ang]->SetBinContent(ii,jj, waterfalls[ang]->GetBinContent(ii,jj)/navg);  
         }
       }
     }
